@@ -28,7 +28,7 @@ nav.scrolled{background:rgba(6,9,15,0.92);backdrop-filter:blur(20px);border-bott
 .logo span{color:var(--teal)}
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{color:var(--muted2);font-size:13px;text-decoration:none;font-weight:500}
-.nav-pill{background:var(--teal);color:var(--bg);font-family:var(--ff);font-size:13px;font-weight:700;padding:8px 20px;border-radius:40px;text-decoration:none}
+.nav-pill{background:var(--teal);color:var(--bg);font-family:var(--ff);font-size:13px;font-weight:700;padding:8px 20px;border-radius:40px;text-decoration:none; border:none; cursor:pointer;}
 
 /* Hero */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 5vw;position:relative}
@@ -47,7 +47,7 @@ nav.scrolled{background:rgba(6,9,15,0.92);backdrop-filter:blur(20px);border-bott
 .section{padding:96px 5vw;max-width:1240px;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(308px,1fr));gap:16px}
 
-/* CARDS ARE NOW LINKS */
+/* Cards */
 .card-feat{grid-column:1/-1;background:var(--card);border:1px solid var(--card-border);border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center;text-decoration:none;color:inherit;transition:0.3s}
 .card{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:24px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:0.3s}
 .card-feat:hover, .card:hover{border-color:var(--teal);transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,0.5)}
@@ -62,6 +62,11 @@ nav.scrolled{background:rgba(6,9,15,0.92);backdrop-filter:blur(20px);border-bott
 .pick{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:18px 24px;display:grid;grid-template-columns:36px 1fr 120px auto;align-items:center;gap:16px;text-decoration:none;color:inherit;margin-bottom:10px;transition:0.2s}
 .pick:hover{border-color:var(--teal);transform:translateX(5px)}
 .p-btn{background:var(--teal);color:var(--bg);font-size:12px;font-weight:700;padding:8px 18px;border-radius:40px}
+
+/* Form Styles */
+.cta-form{display:flex;gap:12px;max-width:450px;margin:40px auto;flex-wrap:wrap;justify-content:center}
+.cta-form input{flex:1;min-width:200px;background:var(--bg3);border:1px solid var(--card-border);color:var(--white);font-family:var(--fb);font-size:14px;padding:13px 20px;border-radius:40px;outline:none;transition:border-color .2s}
+.cta-form input:focus{border-color:var(--teal-border)}
 
 /* Reveal */
 .reveal{opacity:0;transform:translateY(24px);transition:0.6s ease}
@@ -140,6 +145,21 @@ nav.scrolled{background:rgba(6,9,15,0.92);backdrop-filter:blur(20px);border-bott
         <div class="c-btn">Explore Art →</div>
       </div>
     </a>
+  </div>
+</section>
+
+<section class="section" id="subscribe" style="text-align:center; padding-top:20px;">
+  <div class="reveal">
+    <div style="color:var(--teal); font-weight:800; font-size:12px; margin-bottom:10px; letter-spacing:2px;">STAY AHEAD</div>
+    <h2 style="font-family:var(--ff); font-size:clamp(32px, 5vw, 60px); line-height:1.1; margin-bottom:15px;">New tools. Real reviews.<br>Weekly.</h2>
+    <p style="color:var(--muted2); max-width:500px; margin: 0 auto;">Join 12,000+ subscribers getting the best AI tool alerts every week.</p>
+    
+    <form action="https://formsubmit.co/boboiboybasit@gmail.com" method="POST" class="cta-form">
+      <input type="hidden" name="_next" value="https://tyranopt.github.io/toolpulse/">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit" class="nav-pill">Subscribe →</button>
+    </form>
   </div>
 </section>
 
