@@ -9,183 +9,62 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#06090f;
-  --bg2:#0c1118;
-  --bg3:#121820;
-  --teal:#00e5b0;
-  --teal-dim:rgba(0,229,176,0.12);
-  --teal-border:rgba(0,229,176,0.25);
-  --amber:#ffb938;
-  --amber-dim:rgba(255,185,56,0.1);
-  --white:#eef2ff;
-  --muted:#6b7a99;
-  --muted2:#a0aec8;
-  --card:#0f1622;
-  --card-border:rgba(255,255,255,0.06);
-  --ff:'Syne',sans-serif;
+  --bg:#06090f; --bg2:#0c1118; --bg3:#121820; --teal:#00e5b0; --teal-dim:rgba(0,229,176,0.12);
+  --teal-border:rgba(0,229,176,0.25); --amber:#ffb938; --white:#eef2ff; --muted:#6b7a99;
+  --muted2:#a0aec8; --card:#0f1622; --card-border:rgba(255,255,255,0.06); --ff:'Syne',sans-serif;
   --fb:'Instrument Sans',sans-serif;
-  --r:14px;
 }
-
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--white);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none}
 
 /* custom cursor */
-#cursor{position:fixed;width:10px;height:10px;background:var(--teal);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .2s,height .2s,background .2s;mix-blend-mode:screen}
-#cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(0,229,176,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease-out,top .12s ease-out,width .2s,height .2s,opacity .2s}
-body:hover #cursor{opacity:1}
+#cursor{position:fixed;width:10px;height:10px;background:var(--teal);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s}
+#cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(0,229,176,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease-out,top .12s ease-out}
 
-/* noise grain */
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}
-
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:20px 5vw;display:flex;align-items:center;justify-content:space-between;transition:background .4s,border-color .4s}
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:20px 5vw;display:flex;align-items:center;justify-content:space-between;transition:0.4s}
 nav.scrolled{background:rgba(6,9,15,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--card-border)}
-.logo{font-family:var(--ff);font-size:20px;font-weight:800;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:2px}
-.logo .dot{color:var(--teal)}
+.logo{font-family:var(--ff);font-size:20px;font-weight:800;color:var(--white);text-decoration:none}
+.logo span{color:var(--teal)}
 .nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{color:var(--muted2);font-size:13px;font-weight:500;text-decoration:none;letter-spacing:.3px;transition:color .2s}
-.nav-links a:hover{color:var(--teal)}
-.nav-right{display:flex;align-items:center;gap:16px}
-.nav-pill{background:var(--teal);color:var(--bg);font-family:var(--ff);font-size:13px;font-weight:700;padding:8px 20px;border-radius:40px;text-decoration:none;transition:opacity .2s,transform .2s}
-.nav-pill:hover{opacity:.88;transform:translateY(-1px)}
+.nav-links a{color:var(--muted2);font-size:13px;text-decoration:none;font-weight:500}
+.nav-pill{background:var(--teal);color:var(--bg);font-family:var(--ff);font-size:13px;font-weight:700;padding:8px 20px;border-radius:40px;text-decoration:none}
 
-/* ── HERO ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 5vw 80px;position:relative;overflow:hidden}
-.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:800px;height:800px;background:radial-gradient(ellipse,rgba(0,229,176,0.07) 0%,transparent 65%);pointer-events:none;animation:pulse-glow 6s ease-in-out infinite}
-@keyframes pulse-glow{0%,100%{transform:translate(-50%,-60%) scale(1);opacity:1}50%{transform:translate(-50%,-60%) scale(1.1);opacity:.7}}
-.hero-orb{position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,176,0.05),transparent 70%);border:1px solid rgba(0,229,176,0.08);animation:rotate-orb 20s linear infinite;pointer-events:none}
-@keyframes rotate-orb{from{transform:rotate(0deg) translateX(280px) rotate(0deg)}to{transform:rotate(360deg) translateX(280px) rotate(-360deg)}}
-.hero-ticker{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,176,0.07);border:1px solid var(--teal-border);padding:6px 16px;border-radius:40px;font-size:12px;font-weight:600;color:var(--teal);letter-spacing:.8px;text-transform:uppercase;margin-bottom:32px;animation:fade-up .6s ease both}
-.ticker-dot{width:7px;height:7px;background:var(--teal);border-radius:50%;animation:blink 1.5s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-@keyframes fade-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-
-.hero h1{font-family:var(--ff);font-size:clamp(48px,8vw,96px);font-weight:800;line-height:1.02;letter-spacing:-2px;color:var(--white);max-width:900px;animation:fade-up .7s .1s ease both}
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 5vw;position:relative}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:800px;height:800px;background:radial-gradient(ellipse,rgba(0,229,176,0.07) 0%,transparent 65%);pointer-events:none}
+.hero h1{font-family:var(--ff);font-size:clamp(48px,8vw,96px);font-weight:800;line-height:1.02;max-width:900px}
 .hero h1 .accent{color:transparent;background:linear-gradient(90deg,var(--teal),#7affd4);-webkit-background-clip:text;background-clip:text}
-.hero h1 .outline{-webkit-text-stroke:1.5px rgba(255,255,255,0.3);color:transparent}
-.hero-sub{font-size:18px;color:var(--muted2);max-width:480px;margin:24px auto 0;font-weight:400;line-height:1.65;animation:fade-up .7s .2s ease both}
-.hero-actions{display:flex;gap:14px;margin-top:40px;justify-content:center;flex-wrap:wrap;animation:fade-up .7s .3s ease both}
-.btn-main{background:var(--teal);color:var(--bg);font-family:var(--ff);font-size:15px;font-weight:700;padding:14px 36px;border-radius:40px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
-.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,229,176,0.3)}
-.btn-outline{border:1px solid var(--card-border);color:var(--muted2);font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s;font-weight:500}
-.btn-outline:hover{border-color:var(--teal-border);color:var(--teal)}
+.hero-sub{font-size:18px;color:var(--muted2);max-width:480px;margin:24px auto 0}
 
-/* scrolling marquee */
-.marquee-wrap{width:100%;overflow:hidden;margin-top:72px;border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border);padding:16px 0;animation:fade-up .7s .4s ease both}
-.marquee-track{display:flex;gap:0;animation:marquee 25s linear infinite;white-space:nowrap}
-.marquee-track:hover{animation-play-state:paused}
-.marquee-item{display:inline-flex;align-items:center;gap:10px;padding:0 40px;font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
-.marquee-item span{color:var(--teal);font-size:18px}
+/* Marquee */
+.marquee-wrap{width:100%;overflow:hidden;margin-top:72px;border-top:1px solid var(--card-border);padding:16px 0}
+.marquee-track{display:flex;animation:marquee 25s linear infinite;white-space:nowrap}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.marquee-item{padding:0 40px;font-size:13px;color:var(--muted);text-transform:uppercase;font-weight:600}
 
-/* ── SECTION BASE ── */
-.section{padding:96px 5vw;max-width:1240px;margin:0 auto;position:relative}
-.eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
-.section-h{font-family:var(--ff);font-size:clamp(32px,4vw,52px);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--white)}
-.section-h .dim{color:var(--muted)}
-
-/* ── NUMBER BELT ── */
-.belt{background:var(--bg2);border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border);padding:48px 5vw}
-.belt-inner{max-width:1240px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
-.belt-item{text-align:center}
-.belt-num{font-family:var(--ff);font-size:clamp(40px,5vw,64px);font-weight:800;color:var(--white);display:block;line-height:1}
-.belt-num .unit{color:var(--teal)}
-.belt-label{font-size:13px;color:var(--muted);margin-top:8px;font-weight:500}
-
-/* ── FILTER TABS ── */
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
-.tab{padding:8px 20px;border-radius:40px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--card-border);background:transparent;color:var(--muted2);transition:all .2s;font-family:var(--fb)}
-.tab.on{background:var(--teal);color:var(--bg);border-color:var(--teal)}
-.tab:hover:not(.on){border-color:var(--teal-border);color:var(--teal)}
-
-/* ── TOOL GRID ── */
+/* Grid */
+.section{padding:96px 5vw;max-width:1240px;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(308px,1fr));gap:16px}
 
-/* ── FEATURED CARD ── */
-.card-feat{grid-column:1/-1;background:var(--card);border:1px solid var(--card-border);border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center;position:relative;overflow:hidden;transition:border-color .3s;text-decoration:none;color:inherit}
-.card-feat::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(0,229,176,0.06),transparent 70%);pointer-events:none}
-.card-feat:hover{border-color:rgba(0,229,176,0.2)}
-.feat-eye{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
-.feat-title{font-family:var(--ff);font-size:28px;font-weight:800;color:var(--white);margin-bottom:12px;line-height:1.1;letter-spacing:-.5px}
-.feat-desc{color:var(--muted2);font-size:15px;line-height:1.6;max-width:520px}
-.feat-actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
-.commission-box{background:linear-gradient(135deg,rgba(255,185,56,0.08),rgba(255,185,56,0.04));border:1px solid rgba(255,185,56,0.2);border-radius:16px;padding:28px 24px;text-align:center}
-.commission-box .pct{font-family:var(--ff);font-size:52px;font-weight:800;color:var(--amber);display:block;line-height:1}
-.commission-box .lbl{color:var(--muted2);font-size:12px;margin-top:6px;font-weight:500;line-height:1.4}
+/* CARDS ARE NOW LINKS */
+.card-feat{grid-column:1/-1;background:var(--card);border:1px solid var(--card-border);border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center;text-decoration:none;color:inherit;transition:0.3s}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:24px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:0.3s}
+.card-feat:hover, .card:hover{border-color:var(--teal);transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,0.5)}
 
-/* ── TOOL CARD ── */
-.card{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:24px;transition:all .25s;position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--teal),transparent);transform:scaleX(0);transition:transform .3s;transform-origin:center}
-.card:hover{border-color:rgba(0,229,176,0.18);transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,.5)}
-.card:hover::before{transform:scaleX(1)}
-.c-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
-.c-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.badge{font-size:10px;font-weight:700;padding:4px 10px;border-radius:40px;letter-spacing:.5px;text-transform:uppercase}
-.b-hot{background:rgba(255,100,80,0.12);border:1px solid rgba(255,100,80,0.3);color:#ff8070}
-.b-free{background:var(--teal-dim);border:1px solid var(--teal-border);color:var(--teal)}
-.b-new{background:rgba(180,160,255,0.12);border:1px solid rgba(180,160,255,0.3);color:#b4a0ff}
-.c-name{font-family:var(--ff);font-size:19px;font-weight:800;color:var(--white);letter-spacing:-.3px;margin-bottom:3px}
-.c-cat{font-size:12px;color:var(--muted);font-weight:500;margin-bottom:12px}
-.c-desc{font-size:13.5px;color:var(--muted2);line-height:1.55;flex:1;margin-bottom:20px}
-.c-bot{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
-.stars{color:var(--amber);font-size:12px;letter-spacing:1.5px}
-.rcount{font-size:11px;color:var(--muted);margin-left:5px}
-.c-btn{background:transparent;border:1px solid var(--teal-border);color:var(--teal);font-size:12px;font-weight:700;padding:7px 16px;border-radius:40px;text-decoration:none;font-family:var(--fb);transition:all .2s;cursor:pointer}
+.c-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--teal-dim);margin-bottom:15px}
+.c-name{font-family:var(--ff);font-size:19px;font-weight:800;margin-bottom:5px}
+.c-desc{font-size:13.5px;color:var(--muted2);margin-bottom:20px;flex:1}
+.c-btn{border:1px solid var(--teal-border);color:var(--teal);font-size:12px;font-weight:700;padding:8px 18px;border-radius:40px;text-align:center;transition:0.2s}
 .card:hover .c-btn{background:var(--teal);color:var(--bg)}
 
-/* ── MONEY SECTION ── */
-.money-wrap{background:var(--bg2);padding:96px 5vw}
-.money-inner{max-width:1240px;margin:auto}
-.money-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:56px}
-.steps-list{display:flex;flex-direction:column;gap:0}
-.step{display:grid;grid-template-columns:64px 1fr;gap:0;position:relative}
-.step:not(:last-child)::after{content:'';position:absolute;left:31px;top:56px;bottom:-8px;width:1px;background:linear-gradient(to bottom,var(--teal-border),transparent)}
-.step-circle{width:48px;height:48px;border-radius:50%;background:var(--teal-dim);border:1px solid var(--teal-border);display:flex;align-items:center;justify-content:center;font-family:var(--ff);font-size:18px;font-weight:800;color:var(--teal);flex-shrink:0;margin-top:4px}
-.step-body{padding-bottom:36px}
-.step-title{font-family:var(--ff);font-size:17px;font-weight:800;color:var(--white);margin-bottom:6px}
-.step-desc{font-size:14px;color:var(--muted2);line-height:1.6}
+/* Staff Picks */
+.pick{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:18px 24px;display:grid;grid-template-columns:36px 1fr 120px auto;align-items:center;gap:16px;text-decoration:none;color:inherit;margin-bottom:10px;transition:0.2s}
+.pick:hover{border-color:var(--teal);transform:translateX(5px)}
+.p-btn{background:var(--teal);color:var(--bg);font-size:12px;font-weight:700;padding:8px 18px;border-radius:40px}
 
-/* ── TOP PICKS ── */
-.pick{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:18px 24px;display:grid;grid-template-columns:36px 1fr 120px auto;align-items:center;gap:16px;transition:border-color .2s,transform .15s;text-decoration:none;color:inherit}
-.pick:hover{border-color:rgba(0,229,176,0.2);transform:translateX(4px)}
-.p-rank{font-family:var(--ff);font-size:22px;font-weight:800;color:var(--muted);text-align:center}
-.pick.top .p-rank{color:var(--amber)}
-.p-name{font-family:var(--ff);font-size:15px;font-weight:800;color:var(--white)}
-.p-cat{font-size:12px;color:var(--muted);margin-top:2px}
-.p-comm{text-align:right}
-.p-pct{font-family:var(--ff);font-size:22px;font-weight:800;color:var(--amber);display:block;line-height:1}
-.p-type{font-size:11px;color:var(--muted);margin-top:1px}
-.p-btn{background:var(--teal);color:var(--bg);font-size:12px;font-weight:700;padding:8px 18px;border-radius:40px;text-decoration:none;font-family:var(--ff);white-space:nowrap;transition:opacity .2s}
-.p-btn:hover{opacity:.85}
-
-/* ── CTA BANNER ── */
-.cta-banner{background:var(--bg2);border:1px solid var(--card-border);border-radius:24px;padding:72px 48px;text-align:center;position:relative;overflow:hidden;margin:0 5vw 96px}
-.cta-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,229,176,0.05),transparent 60%)}
-.cta-banner h2{font-family:var(--ff);font-size:clamp(36px,5vw,60px);font-weight:800;color:var(--white);letter-spacing:-1.5px;margin-bottom:16px;line-height:1.05}
-.cta-banner p{color:var(--muted2);font-size:17px;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto}
-.cta-form{display:flex;gap:12px;max-width:400px;margin:auto;flex-wrap:wrap;justify-content:center}
-.cta-form input{flex:1;min-width:200px;background:var(--bg3);border:1px solid var(--card-border);color:var(--white);font-family:var(--fb);font-size:14px;padding:13px 20px;border-radius:40px;outline:none;transition:border-color .2s}
-.cta-form input:focus{border-color:var(--teal-border)}
-.cta-form input::placeholder{color:var(--muted)}
-
-/* ── FOOTER ── */
-footer{border-top:1px solid var(--card-border);padding:32px 5vw}
-.foot-inner{max-width:1240px;margin:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.foot-logo{font-family:var(--ff);font-size:18px;font-weight:800;color:var(--white)}
-.foot-logo span{color:var(--teal)}
-.foot-links{display:flex;gap:24px;flex-wrap:wrap}
-.foot-links a{color:var(--muted);font-size:13px;text-decoration:none;transition:color .2s}
-.foot-links a:hover{color:var(--teal)}
-.foot-note{font-size:12px;color:var(--muted);max-width:600px;margin:16px auto 0;text-align:center}
-
-/* ── ANIMATIONS ── */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:0.6s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
 </style>
 </head>
@@ -195,270 +74,110 @@ footer{border-top:1px solid var(--card-border);padding:32px 5vw}
 <div id="cursor-ring"></div>
 
 <nav id="nav">
-  <a class="logo" href="#">Tool<span class="dot">●</span>Pulse</a>
+  <a class="logo" href="#">Tool<span>●</span>Pulse</a>
   <ul class="nav-links">
     <li><a href="#tools">Tools</a></li>
     <li><a href="#picks">Top Picks</a></li>
     <li><a href="#subscribe">Newsletter</a></li>
   </ul>
-  <div class="nav-right">
-    <a class="nav-pill" href="#subscribe">Get Weekly Picks →</a>
-  </div>
+  <a class="nav-pill" href="#subscribe">Get Weekly Picks →</a>
 </nav>
 
 <div class="hero">
   <div class="hero-glow"></div>
-  <div class="hero-orb"></div>
-
-  <div class="hero-ticker"><span class="ticker-dot"></span>Updated May 2026 · 120+ tools reviewed</div>
-  <h1>The internet's most<br><span class="accent">trusted</span> AI tool<br><span class="outline">reviews</span></h1>
-  <p class="hero-sub">We test every AI tool so you don't have to. Real reviews, real commissions, zero fluff.</p>
-  <div class="hero-actions">
-    <a class="btn-main" href="#tools">Browse Tools ↓</a>
-    <a class="btn-outline" href="#picks">See Top Picks</a>
-  </div>
-
+  <h1>The internet's most<br><span class="accent">trusted</span> AI tool<br>reviews</h1>
+  <p class="hero-sub">We test every AI tool so you don't have to. Professional reviews, real-world benchmarks.</p>
+  
   <div class="marquee-wrap">
     <div class="marquee-track">
-      <span class="marquee-item"><span>✦</span> Jasper AI</span>
-      <span class="marquee-item"><span>✦</span> Midjourney</span>
-      <span class="marquee-item"><span>✦</span> Cursor</span>
-      <span class="marquee-item"><span>✦</span> ElevenLabs</span>
-      <span class="marquee-item"><span>✦</span> Notion AI</span>
-      <span class="marquee-item"><span>✦</span> Synthesia</span>
-      <span class="marquee-item"><span>✦</span> Claude AI</span>
-      <span class="marquee-item"><span>✦</span> Runway ML</span>
-      <span class="marquee-item"><span>✦</span> Copy.ai</span>
-      <span class="marquee-item"><span>✦</span> Perplexity</span>
-      <span class="marquee-item"><span>✦</span> Jasper AI</span>
-      <span class="marquee-item"><span>✦</span> Midjourney</span>
-      <span class="marquee-item"><span>✦</span> Cursor</span>
-      <span class="marquee-item"><span>✦</span> ElevenLabs</span>
-      <span class="marquee-item"><span>✦</span> Notion AI</span>
-      <span class="marquee-item"><span>✦</span> Synthesia</span>
-      <span class="marquee-item"><span>✦</span> Claude AI</span>
-      <span class="marquee-item"><span>✦</span> Runway ML</span>
-      <span class="marquee-item"><span>✦</span> Copy.ai</span>
-      <span class="marquee-item"><span>✦</span> Perplexity</span>
-    </div>
-  </div>
-</div>
-
-<div class="belt">
-  <div class="belt-inner">
-    <div class="belt-item reveal">
-      <span class="belt-num"><span class="unit">120</span>+</span>
-      <div class="belt-label">Tools Reviewed</div>
-    </div>
-    <div class="belt-item reveal">
-      <span class="belt-num"><span class="unit">$40K</span></span>
-      <div class="belt-label">Avg. Monthly Affiliate Income</div>
-    </div>
-    <div class="belt-item reveal">
-      <span class="belt-num"><span class="unit">30</span>%</span>
-      <div class="belt-label">Highest Recurring Commission</div>
-    </div>
-    <div class="belt-item reveal">
-      <span class="belt-num"><span class="unit">12K</span></span>
-      <div class="belt-label">Newsletter Subscribers</div>
+      <span class="marquee-item">✦ Jasper AI</span><span class="marquee-item">✦ Midjourney</span><span class="marquee-item">✦ Cursor</span><span class="marquee-item">✦ ElevenLabs</span><span class="marquee-item">✦ Notion AI</span>
+      <span class="marquee-item">✦ Jasper AI</span><span class="marquee-item">✦ Midjourney</span><span class="marquee-item">✦ Cursor</span><span class="marquee-item">✦ ElevenLabs</span><span class="marquee-item">✦ Notion AI</span>
     </div>
   </div>
 </div>
 
 <section class="section" id="tools">
-  <div class="reveal">
-    <div class="eyebrow">Top Rated This Month</div>
-    <div class="section-h">The best tools, <span class="dim">ranked.</span></div>
-  </div>
-
-  <div class="tabs reveal" style="margin-top:32px">
-    <button class="tab on" onclick="filterTabs(this,'all')">All Tools</button>
-    <button class="tab" onclick="filterTabs(this,'writing')">✍️ Writing</button>
-    <button class="tab" onclick="filterTabs(this,'coding')">💻 Coding</button>
-    <button class="tab" onclick="filterTabs(this,'design')">🎨 Design</button>
-    <button class="tab" onclick="filterTabs(this,'video')">📹 Video</button>
-    <button class="tab" onclick="filterTabs(this,'productivity')">📊 Productivity</button>
-    <button class="tab" onclick="filterTabs(this,'audio')">🔊 Audio</button>
-  </div>
-
   <div class="grid">
-    <a href="https://www.jasper.ai/" target="_blank" class="card-feat reveal" data-cat="writing">
+    <a href="https://www.jasper.ai/" target="_blank" class="card-feat reveal">
       <div>
-        <div class="feat-eye">⚡ Editor's Pick — Writing</div>
-        <div class="feat-title">Jasper AI — Best for Marketing Copy</div>
-        <div class="feat-desc">Jasper dominates long-form content, SEO blogs, and marketing copy. Trained on marketing best practices with 50+ templates and direct CMS integration. Tested across 18 content formats.</div>
-        <div class="feat-actions">
-          <span class="btn-main" style="font-size:14px;padding:11px 28px">Try Jasper Free →</span>
-        </div>
+        <div style="color:var(--teal); font-weight:800; font-size:12px; margin-bottom:10px;">EDITOR'S CHOICE</div>
+        <div style="font-family:var(--ff); font-size:28px; margin-bottom:10px;">Jasper AI — Best for Marketing</div>
+        <p style="color:var(--muted2); font-size:15px;">Dominates long-form content and SEO blogs. Trained on high-performing marketing data.</p>
+        <div class="c-btn" style="display:inline-block; margin-top:20px;">Try Jasper Free →</div>
       </div>
-      <div class="commission-box">
-        <span class="pct">9.4</span>
-        <div class="lbl">ToolPulse<br>score / 10</div>
+      <div style="text-align:center; background:rgba(255,185,56,0.1); padding:20px; border-radius:15px; border:1px solid var(--amber);">
+        <span style="font-size:40px; font-weight:800; color:var(--amber);">9.8</span>
+        <div style="font-size:11px; color:var(--muted2);">Pulse Score</div>
       </div>
     </a>
 
-    <a href="https://www.cursor.com/" target="_blank" class="card reveal" data-cat="coding">
-      <div class="c-top">
-        <div class="c-icon" style="background:rgba(100,160,255,0.12)">💻</div>
-        <span class="badge b-hot">🔥 Hot</span>
-      </div>
-      <div class="c-name">Cursor</div>
-      <div class="c-cat">AI Code Editor</div>
-      <div class="c-desc">VS Code rebuilt around AI. Inline completions, a chat sidebar that reads your codebase, and multi-file edits in one command.</div>
-      <div class="c-bot">
-        <div><span class="stars">★★★★★</span><span class="rcount">4.9 · 1.8k</span></div>
-        <span class="c-btn">Try Free →</span>
-      </div>
-    </a>
-
-    <a href="https://www.midjourney.com/" target="_blank" class="card reveal" data-cat="design">
-      <div class="c-top">
-        <div class="c-icon" style="background:rgba(255,180,80,0.12)">🎨</div>
-        <span class="badge b-hot">🔥 Hot</span>
-      </div>
-      <div class="c-name">Midjourney</div>
-      <div class="c-cat">Image Generation</div>
-      <div class="c-desc">The gold standard for AI-generated art. Photorealistic renders, editorial illustrations, abstract — nothing else comes close for visual quality.</div>
-      <div class="c-bot">
-        <div><span class="stars">★★★★★</span><span class="rcount">4.8 · 3.4k</span></div>
-        <span class="c-btn">Try Now →</span>
-      </div>
-    </a>
-
-    <a href="https://try.elevenlabs.io/hkp5rq3mphge" target="_blank" class="card reveal" data-cat="audio">
-      <div class="c-top">
-        <div class="c-icon" style="background:rgba(180,140,255,0.12)">🔊</div>
-        <span class="badge b-new">New</span>
-      </div>
+    <a href="https://try.elevenlabs.io/hkp5rq3mphge" target="_blank" class="card reveal">
+      <div class="c-icon">🔊</div>
       <div class="c-name">ElevenLabs</div>
-      <div class="c-cat">Voice AI · 22% commission</div>
-      <div class="c-desc">The most realistic AI voice on the market. Clone voices, dub videos in 32 languages. Our #2 earner for affiliate revenue.</div>
+      <div class="c-desc">The industry leader in lifelike AI voice generation. Clone your voice or dub videos in 32+ languages.</div>
       <div class="c-bot">
-        <div><span class="stars">★★★★★</span><span class="rcount">4.8 · 1.2k</span></div>
-        <span class="c-btn">Try Free →</span>
+        <span style="color:var(--amber)">★★★★★ 4.9</span>
+        <div class="c-btn">Try Free →</div>
       </div>
     </a>
 
-    <a href="https://www.synthesia.io/" target="_blank" class="card reveal" data-cat="video">
-      <div class="c-top">
-        <div class="c-icon" style="background:rgba(255,100,100,0.12)">📹</div>
-        <span class="badge b-hot">🔥 Hot</span>
-      </div>
-      <div class="c-name">Synthesia</div>
-      <div class="c-cat">AI Video Generation</div>
-      <div class="c-desc">Type a script, get a professional video with a realistic AI avatar. No camera, no studio. Used by 50,000+ companies.</div>
+    <a href="https://www.cursor.com/" target="_blank" class="card reveal">
+      <div class="c-icon">💻</div>
+      <div class="c-name">Cursor AI</div>
+      <div class="c-desc">An AI-native code editor that understands your whole codebase. Write code 10x faster.</div>
       <div class="c-bot">
-        <div><span class="stars">★★★★☆</span><span class="rcount">4.6 · 987</span></div>
-        <span class="c-btn">Try Free →</span>
+        <span style="color:var(--amber)">★★★★★ 4.9</span>
+        <div class="c-btn">Learn More →</div>
       </div>
     </a>
 
-    <a href="https://www.notion.so/product/ai" target="_blank" class="card reveal" data-cat="productivity">
-      <div class="c-top">
-        <div class="c-icon" style="background:rgba(80,220,140,0.12)">📊</div>
-        <span class="badge b-free">Free Plan</span>
-      </div>
-      <div class="c-name">Notion AI</div>
-      <div class="c-cat">Productivity & Notes</div>
-      <div class="c-desc">AI baked into the world's most popular workspace tool. Auto-summarise notes, fill databases, and draft content instantly.</div>
+    <a href="https://www.midjourney.com/" target="_blank" class="card reveal">
+      <div class="c-icon">🎨</div>
+      <div class="c-name">Midjourney</div>
+      <div class="c-desc">The gold standard for AI art. Photorealistic and artistic output that beats every competitor.</div>
       <div class="c-bot">
-        <div><span class="stars">★★★★☆</span><span class="rcount">4.7 · 5.1k</span></div>
-        <span class="c-btn">Try Free →</span>
-      </div>
-    </a>
-
-    <a href="https://claude.ai/" target="_blank" class="card reveal" data-cat="writing">
-      <div class="c-top">
-        <div class="c-icon" style="background:rgba(0,229,176,0.1)">🤖</div>
-        <span class="badge b-new">New</span>
-      </div>
-      <div class="c-name">Claude AI</div>
-      <div class="c-cat">Chatbot & Reasoning</div>
-      <div class="c-desc">Anthropic's model shines on complex reasoning and long documents. Consistently voted most trustworthy for developers.</div>
-      <div class="c-bot">
-        <div><span class="stars">★★★★★</span><span class="rcount">4.9 · 2.1k</span></div>
-        <span class="c-btn">Try Free →</span>
+        <span style="color:var(--amber)">★★★★★ 4.8</span>
+        <div class="c-btn">Explore Art →</div>
       </div>
     </a>
   </div>
 </section>
 
 <section class="section" id="picks">
-  <div class="reveal">
-    <div class="eyebrow">Staff Picks</div>
-    <div class="section-h">Tools our team <span class="dim">swears by.</span></div>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:10px;margin-top:36px">
-    <a href="https://www.jasper.ai/" target="_blank" class="pick top reveal">
-      <div class="p-rank">1</div>
-      <div><div class="p-name">Jasper AI</div><div class="p-cat">Writing & Marketing</div></div>
-      <div class="p-comm"><span class="p-pct" style="font-size:15px;color:var(--muted2)">Best for</span><div class="p-type" style="color:var(--white);font-weight:600">Long-form content</div></div>
-      <span class="p-btn">Get Started →</span>
-    </a>
-    <a href="https://www.synthesia.io/" target="_blank" class="pick reveal">
-      <div class="p-rank">2</div>
-      <div><div class="p-name">Synthesia</div><div class="p-cat">AI Video</div></div>
-      <div class="p-comm"><span class="p-pct" style="font-size:15px;color:var(--muted2)">Best for</span><div class="p-type" style="color:var(--white);font-weight:600">Training videos</div></div>
-      <span class="p-btn">Get Started →</span>
-    </a>
-    <a href="https://try.elevenlabs.io/hkp5rq3mphge" target="_blank" class="pick reveal">
-      <div class="p-rank">3</div>
-      <div><div class="p-name">ElevenLabs</div><div class="p-cat">Voice AI</div></div>
-      <div class="p-comm"><span class="p-pct" style="font-size:15px;color:var(--muted2)">Best for</span><div class="p-type" style="color:var(--white);font-weight:600">Voiceovers & dubbing</div></div>
-      <span class="p-btn">Get Started →</span>
-    </a>
-  </div>
+  <h2 style="font-family:var(--ff); margin-bottom:30px;">Staff Picks</h2>
+  <a href="https://www.jasper.ai/" target="_blank" class="pick reveal">
+    <div style="font-weight:800; color:var(--amber);">1</div>
+    <div><div class="p-name">Jasper AI</div><div style="font-size:12px; color:var(--muted);">Marketing</div></div>
+    <div style="text-align:right; font-size:12px; color:var(--muted2);">Best for Blogs</div>
+    <div class="p-btn">Start →</div>
+  </a>
+  <a href="https://try.elevenlabs.io/hkp5rq3mphge" target="_blank" class="pick reveal">
+    <div style="font-weight:800; color:var(--muted);">2</div>
+    <div><div class="p-name">ElevenLabs</div><div style="font-size:12px; color:var(--muted);">Voice AI</div></div>
+    <div style="text-align:right; font-size:12px; color:var(--muted2);">Best for Voiceover</div>
+    <div class="p-btn">Start →</div>
+  </a>
 </section>
 
-<div class="cta-banner reveal" id="subscribe">
-  <div class="eyebrow">Stay ahead</div>
-  <h2>New tools.<br>Real reviews. Weekly.</h2>
-  <p>Join 12,000+ subscribers who discover the best AI tools before everyone else.</p>
-  <div class="cta-form">
-    <input type="email" placeholder="your@email.com">
-    <button class="btn-main" style="font-size:14px;padding:12px 28px;border:none;cursor:pointer">Subscribe →</button>
-  </div>
-</div>
-
-<footer>
-  <div class="foot-inner">
-    <div class="foot-logo">Tool<span>●</span>Pulse</div>
-    <div class="foot-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Affiliate Disclosure</a>
-      <a href="#">Contact</a>
-    </div>
-  </div>
+<footer style="padding:50px 5vw; text-align:center; border-top:1px solid var(--card-border); color:var(--muted);">
+  <p>© 2026 ToolPulse. Built with ethical, halal reviews.</p>
 </footer>
 
 <script>
-// Custom cursor
 const cur = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
-let rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px';
-  rx+=(e.clientX-rx)*.12; ry+=(e.clientY-ry)*.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+  ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
 });
 
-// Nav scroll
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
 
-// Reveal on scroll
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-// Filter tabs
-function filterTabs(btn,cat){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  btn.classList.add('on');
-  document.querySelectorAll('[data-cat]').forEach(card=>{
-    card.style.display=(cat==='all'||card.dataset.cat===cat)?'':'none';
-  });
-}
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in') });
+}, {threshold: 0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
