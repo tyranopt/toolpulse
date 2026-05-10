@@ -30,10 +30,6 @@ nav.scrolled{background:rgba(6,9,15,0.92);backdrop-filter:blur(20px);border-bott
 .hero h1{font-family:var(--ff);font-size:clamp(48px,8vw,96px);font-weight:800;line-height:1.02;max-width:900px}
 .hero h1 .accent{color:transparent;background:linear-gradient(90deg,var(--teal),#7affd4);-webkit-background-clip:text;background-clip:text}
 .hero-sub{font-size:18px;color:var(--muted2);max-width:480px;margin:24px auto 0}
-.marquee-wrap{width:100%;overflow:hidden;margin-top:72px;border-top:1px solid var(--card-border);padding:16px 0}
-.marquee-track{display:flex;animation:marquee 25s linear infinite;white-space:nowrap}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.marquee-item{padding:0 40px;font-size:13px;color:var(--muted);text-transform:uppercase;font-weight:600}
 .section{padding:96px 5vw;max-width:1240px;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(308px,1fr));gap:16px}
 .card-feat{grid-column:1/-1;background:var(--card);border:1px solid var(--card-border);border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center;text-decoration:none;color:inherit;transition:0.3s}
@@ -44,10 +40,7 @@ nav.scrolled{background:rgba(6,9,15,0.92);backdrop-filter:blur(20px);border-bott
 .c-desc{font-size:13.5px;color:var(--muted2);margin-bottom:20px;flex:1}
 .c-btn{border:1px solid var(--teal-border);color:var(--teal);font-size:12px;font-weight:700;padding:8px 18px;border-radius:40px;text-align:center;transition:0.2s}
 .card:hover .c-btn{background:var(--teal);color:var(--bg)}
-.pick{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:18px 24px;display:grid;grid-template-columns:36px 1fr 120px auto;align-items:center;gap:16px;text-decoration:none;color:inherit;margin-bottom:10px;transition:0.2s}
-.pick:hover{border-color:var(--teal);transform:translateX(5px)}
-.p-btn{background:var(--teal);color:var(--bg);font-size:12px;font-weight:700;padding:8px 18px;border-radius:40px}
-.cta-banner{background:var(--bg2);border:1px solid var(--card-border);border-radius:24px;padding:72px 48px;text-align:center;margin:0 5vw 96px}
+.cta-banner{background:var(--bg2);border:1px solid var(--card-border);border-radius:24px;padding:72px 48px;text-align:center;margin:96px 5vw}
 .cta-form{display:flex;gap:12px;max-width:450px;margin:40px auto;flex-wrap:wrap;justify-content:center}
 .cta-form input{flex:1;min-width:200px;background:var(--bg3);border:1px solid var(--card-border);color:var(--white);font-family:var(--fb);font-size:14px;padding:13px 20px;border-radius:40px;outline:none}
 .reveal{opacity:0;transform:translateY(24px);transition:0.6s ease}
@@ -61,7 +54,6 @@ nav.scrolled{background:rgba(6,9,15,0.92);backdrop-filter:blur(20px);border-bott
   <a class="logo" href="#">Tool<span>●</span>Pulse</a>
   <ul class="nav-links">
     <li><a href="#tools">Tools</a></li>
-    <li><a href="#picks">Top Picks</a></li>
     <li><a href="#subscribe">Newsletter</a></li>
   </ul>
 </nav>
@@ -69,7 +61,7 @@ nav.scrolled{background:rgba(6,9,15,0.92);backdrop-filter:blur(20px);border-bott
 <div class="hero">
   <div class="hero-glow"></div>
   <h1>The internet's most<br><span class="accent">trusted</span> AI tool reviews</h1>
-  <p class="hero-sub">We test every AI tool so you don't have to. Professional reviews, real-world benchmarks.</p>
+  <p class="hero-sub">We test every AI tool so you don't have to. Real reviews and benchmarks.</p>
 </div>
 
 <section class="section" id="tools">
@@ -85,32 +77,55 @@ nav.scrolled{background:rgba(6,9,15,0.92);backdrop-filter:blur(20px);border-bott
         <span style="font-size:40px; font-weight:800; color:var(--amber);">9.8</span>
       </div>
     </a>
+
     <a href="https://try.elevenlabs.io/hkp5rq3mphge" target="_blank" class="card reveal">
       <div class="c-icon">🔊</div>
       <div class="c-name">ElevenLabs</div>
       <div class="c-desc">The industry leader in lifelike AI voice generation. Clone your voice or dub videos.</div>
       <div class="c-bot"><span style="color:var(--amber)">★★★★★ 4.9</span><div class="c-btn">Try Free →</div></div>
     </a>
+
     <a href="https://www.cursor.com/" target="_blank" class="card reveal">
       <div class="c-icon">💻</div>
       <div class="c-name">Cursor AI</div>
       <div class="c-desc">An AI-native code editor that understands your whole codebase. Write code 10x faster.</div>
       <div class="c-bot"><span style="color:var(--amber)">★★★★★ 4.9</span><div class="c-btn">Learn More →</div></div>
     </a>
+
     <a href="https://www.midjourney.com/" target="_blank" class="card reveal">
       <div class="c-icon">🎨</div>
       <div class="c-name">Midjourney</div>
-      <div class="c-desc">The gold standard for AI art. Photorealistic and artistic output.</div>
+      <div class="c-desc">The gold standard for AI art. Photorealistic renders and artistic output.</div>
       <div class="c-bot"><span style="color:var(--amber)">★★★★★ 4.8</span><div class="c-btn">Explore Art →</div></div>
+    </a>
+
+    <a href="https://www.synthesia.io/" target="_blank" class="card reveal">
+      <div class="c-icon">📹</div>
+      <div class="c-name">Synthesia</div>
+      <div class="c-desc">Type a script, get a professional video with a realistic AI avatar. No camera needed.</div>
+      <div class="c-bot"><span style="color:var(--amber)">★★★★☆ 4.6</span><div class="c-btn">Try Free →</div></div>
+    </a>
+
+    <a href="https://www.notion.so/product/ai" target="_blank" class="card reveal">
+      <div class="c-icon">📊</div>
+      <div class="c-name">Notion AI</div>
+      <div class="c-desc">AI-powered workspace for notes, docs, and project management. Summarize anything.</div>
+      <div class="c-bot"><span style="color:var(--amber)">★★★★★ 4.7</span><div class="c-btn">Try Free →</div></div>
+    </a>
+
+    <a href="https://claude.ai/" target="_blank" class="card reveal">
+      <div class="c-icon">🤖</div>
+      <div class="c-name">Claude AI</div>
+      <div class="c-desc">Advanced reasoning and safe AI. Best for coding logic and reading long files.</div>
+      <div class="c-bot"><span style="color:var(--amber)">★★★★★ 4.9</span><div class="c-btn">Try Free →</div></div>
     </a>
   </div>
 </section>
 
 <div class="cta-banner reveal" id="subscribe">
   <h2>Stay Ahead</h2>
-  <p>Join 12,000+ pros getting the best AI tool alerts every Tuesday.</p>
+  <p>Join 12,000+ pros getting AI tool alerts every Tuesday.</p>
   <form action="https://formsubmit.co/boboiboybasit@gmail.com" method="POST" class="cta-form">
-    <input type="hidden" name="_next" value="https://tyranopt.github.io/toolpulse/">
     <input type="hidden" name="_captcha" value="false">
     <input type="email" name="email" placeholder="your@email.com" required>
     <button type="submit" class="nav-pill">Subscribe →</button>
