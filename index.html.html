@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolPulse — The Internet's Most Trusted AI Reviews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --navy:#0b1120;--navy2:#131d30;--navy3:#1a2640;
+    --teal:#0fd4a4;--teal2:#0ab88c;--teal3:#088f6d;
+    --amber:#f5a623;--amber2:#e8950f;
+    --slate:#8a98b4;--slate2:#c2cde0;--white:#f0f4ff;
+    --card:#192234;--border:rgba(255,255,255,0.07);
+    --ff-display:'Playfair Display',Georgia,serif;
+    --ff-body:'DM Sans',system-ui,sans-serif;
+    --radius:12px;--radius-sm:8px;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--navy);color:var(--white);font-family:var(--ff-body);font-size:16px;line-height:1.6;overflow-x:hidden}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:rgba(11,17,32,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 5vw}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1200px;margin:auto}
+  .logo{font-family:var(--ff-display);font-size:22px;font-weight:900;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:8px}
+  .logo span{color:var(--teal)}
+  .nav-links{display:flex;gap:32px;list-style:none}
+  .nav-links a{color:var(--slate2);font-size:14px;font-weight:500;text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--teal)}
+  .nav-cta{background:var(--teal);color:var(--navy);font-size:13px;font-weight:600;padding:8px 20px;border-radius:40px;text-decoration:none;transition:background .2s}
+
+  /* HERO */
+  .hero{position:relative;padding:100px 5vw 80px;text-align:center;overflow:hidden}
+  .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(15,212,164,0.12);border:1px solid rgba(15,212,164,0.3);color:var(--teal);font-size:12px;font-weight:600;padding:5px 14px;border-radius:40px;margin-bottom:28px;text-transform:uppercase}
+  .hero h1{font-family:var(--ff-display);font-size:clamp(42px,7vw,72px);font-weight:900;line-height:1.1;max-width:900px;margin:0 auto 24px}
+  .hero h1 em{font-style:normal;color:var(--teal)}
+  .hero p{font-size:18px;color:var(--slate2);max-width:550px;margin:0 auto 40px;font-weight:300}
+
+  /* GRID & CARDS */
+  section{padding:80px 5vw;max-width:1280px;margin:0 auto}
+  .section-title{font-family:var(--ff-display);font-size:clamp(28px,3.5vw,40px);font-weight:900;margin-bottom:40px}
+  .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+  .tool-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .25s;position:relative}
+  .tool-card:hover{border-color:rgba(15,212,164,0.35);transform:translateY(-3px)}
+  .tool-name{font-size:18px;font-weight:700;margin-bottom:4px}
+  .tool-desc{font-size:14px;color:var(--slate2);margin-bottom:18px}
+  
+  .btn-primary{background:var(--teal);color:var(--navy);font-weight:700;padding:12px 24px;border-radius:40px;text-decoration:none;display:inline-block;border:none;cursor:pointer}
+  .btn-outline{border:1px solid var(--teal);color:var(--teal);font-weight:700;padding:12px 24px;border-radius:40px;text-decoration:none;display:inline-block}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--border);padding:60px 5vw;text-align:center;color:var(--slate);font-size:13px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/">Tool<span>Pulse</span></a>
+    <ul class="nav-links">
+      <li><a href="#tools">Browse</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#newsletter">Newsletter</a></li>
+    </ul>
+    <a class="nav-cta" href="#newsletter">Join 12k Readers</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">🟢 LIVE REVIEWS: MAY 2026</div>
+  <h1>The internet's <em>most trusted</em> AI tool reviews</h1>
+  <p>We test every AI tool so you don't have to. Real-world benchmarks, professional use-cases, and zero fluff.</p>
+  <div style="display:flex;gap:16px;justify-content:center">
+    <a class="btn-primary" href="#tools">View Top Picks</a>
+    <a class="btn-outline" href="#newsletter">Get Weekly Updates</a>
+  </div>
+</div>
+
+<section id="tools">
+  <h2 class="section-title">Editor's Top Rated Tools</h2>
+  <div class="tools-grid">
+
+    <div class="tool-card">
+      <div style="font-size:32px;margin-bottom:12px">🔊</div>
+      <div class="tool-name">ElevenLabs</div>
+      <div style="color:var(--teal);font-size:12px;font-weight:700;margin-bottom:8px">BEST FOR VOICE AI</div>
+      <p class="tool-desc">The industry leader in lifelike AI voice generation. Clone your voice, create audiobooks, or dub video content in 32+ languages.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="color:var(--amber)">★★★★★ 4.8</span>
+        <a class="btn-primary" href="https://try.elevenlabs.io/hkp5rq3mphge" target="_blank" rel="nofollow">Try Free →</a>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div style="font-size:32px;margin-bottom:12px">💻</div>
+      <div class="tool-name">Cursor</div>
+      <div style="color:var(--teal);font-size:12px;font-weight:700;margin-bottom:8px">BEST FOR DEVELOPERS</div>
+      <p class="tool-desc">An AI-native code editor that understands your entire codebase. Write and debug code 10x faster with deep AI integration.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="color:var(--amber)">★★★★★ 4.9</span>
+        <a class="btn-primary" href="#">Try Free →</a>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div style="font-size:32px;margin-bottom:12px">✍️</div>
+      <div class="tool-name">Jasper AI</div>
+      <div style="color:var(--teal);font-size:12px;font-weight:700;margin-bottom:8px">BEST FOR MARKETING</div>
+      <p class="tool-desc">The gold standard for enterprise marketing copy. Trained on brand-voice data to produce high-converting SEO blogs and social posts.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="color:var(--amber)">★★★★★ 4.7</span>
+        <a class="btn-primary" href="#">Try Free →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="methodology" style="background:var(--navy2); border-radius:20px; margin:40px auto; text-align:center;">
+    <h2 class="section-title">Our Testing Methodology</h2>
+    <p style="max-width:700px; margin:0 auto 40px; color:var(--slate2);">We never list a tool based on a press release. Our team spends at least 20 hours with every tool, testing for output quality, ease of use, and true value for money.</p>
+</section>
+
+<section id="newsletter">
+  <div style="background:linear-gradient(45deg, #131d30, #1a2640); padding:60px; border-radius:24px; text-align:center; border:1px solid var(--teal);">
+    <h2 style="font-family:var(--ff-display); font-size:36px; margin-bottom:16px;">Get the Edge</h2>
+    <p style="color:var(--slate2); margin-bottom:32px;">Join 12,000+ pros getting the best AI tool alerts every Tuesday.</p>
+    
+    <form name="newsletter" method="POST" data-netlify="true" style="display:flex; gap:12px; max-width:500px; margin:0 auto;">
+      <input type="email" name="email" placeholder="Enter your email" required style="flex:1; padding:14px 20px; border-radius:40px; border:1px solid var(--border); background:var(--navy); color:white;">
+      <button type="submit" class="btn-primary">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 ToolPulse. All rights reserved.</p>
+  <p style="margin-top:10px; opacity:0.6;">Affiliate Disclosure: Some links on this site pay us a small commission which supports our independent research. We only recommend tools we actually use.</p>
+</footer>
+
+</body>
+</html>
