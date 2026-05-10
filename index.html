@@ -23,28 +23,25 @@
     nav.scrolled{background:rgba(6,9,15,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--card-border)}
     .logo{font-family:var(--ff);font-size:20px;font-weight:800;color:var(--white);text-decoration:none}
     .logo span{color:var(--teal)}
-    .nav-pill{background:var(--teal);color:var(--bg);font-family:var(--ff);font-size:13px;font-weight:700;padding:8px 20px;border-radius:40px;text-decoration:none}
     .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 5vw;position:relative;overflow:hidden}
-    .hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:800px;height:800px;background:radial-gradient(ellipse,rgba(0,229,176,0.07) 0%,transparent 65%);pointer-events:none}
     .hero h1{font-family:var(--ff);font-size:clamp(48px,8vw,96px);font-weight:800;line-height:1.02;letter-spacing:-2px;max-width:900px}
     .hero h1 .accent{color:transparent;background:linear-gradient(90deg,var(--teal),#7affd4);-webkit-background-clip:text;background-clip:text}
-    .hero h1 .outline{-webkit-text-stroke:1.5px rgba(255,255,255,0.3);color:transparent}
     .section{padding:96px 5vw;max-width:1240px;margin:0 auto}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(308px,1fr));gap:16px}
-    .card-feat, .card, .pick{background:var(--card);border:1px solid var(--card-border);border-radius:20px;text-decoration:none;color:inherit;transition:0.3s}
-    .card-feat{grid-column:1/-1;padding:40px;display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center;margin-bottom:32px}
-    .card{padding:24px;display:flex;flex-direction:column}
-    .card:hover, .card-feat:hover{border-color:var(--teal);transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,0.5)}
+    .card-feat, .card, .pick{background:var(--card);border:1px solid var(--card-border);border-radius:20px;padding:40px;text-decoration:none;color:inherit;transition:0.3s}
+    .card-feat{grid-column:1/-1;display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center;margin-bottom:32px}
+    .card{border-radius:16px;padding:24px;display:flex;flex-direction:column}
+    .card-feat:hover, .card:hover, .pick:hover{border-color:var(--teal);transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,0.5)}
     .c-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--teal-dim);margin-bottom:15px}
     .c-name{font-family:var(--ff);font-size:19px;font-weight:800;margin-bottom:5px}
     .c-desc{font-size:13.5px;color:var(--muted2);margin-bottom:20px;flex:1}
-    .c-btn{border:1px solid var(--teal-border);color:var(--teal);font-size:12px;font-weight:700;padding:8px 18px;border-radius:40px;text-align:center}
+    .c-btn{border:1px solid var(--teal-border);color:var(--teal);font-size:12px;font-weight:700;padding:8px 18px;border-radius:40px;text-align:center;transition:0.2s}
     .card:hover .c-btn{background:var(--teal);color:var(--bg)}
-    .pick{padding:18px 24px;display:grid;grid-template-columns:36px 1fr 120px auto;align-items:center;gap:16px;margin-bottom:10px}
-    .p-btn{background:var(--teal);color:var(--bg);font-size:12px;font-weight:700;padding:8px 18px;border-radius:40px}
+    .commission-box{background:var(--amber-dim);border:1px solid rgba(255,185,56,0.2);border-radius:16px;padding:28px 24px;text-align:center}
+    .commission-box .pct{font-family:var(--ff);font-size:52px;font-weight:800;color:var(--amber);display:block;line-height:1}
     .cta-banner{background:var(--bg2);border:1px solid var(--card-border);border-radius:24px;padding:72px 48px;text-align:center;margin:96px 5vw}
     .cta-form{display:flex;gap:12px;max-width:450px;margin:32px auto;justify-content:center}
-    .cta-form input{flex:1;background:var(--bg3);border:1px solid var(--card-border);color:#fff;padding:13px 20px;border-radius:40px;outline:none}
+    .cta-form input{flex:1;background:var(--bg3);border:1px solid var(--card-border);color:white;padding:13px 20px;border-radius:40px;outline:none}
     .reveal{opacity:0;transform:translateY(24px);transition:0.6s ease}
     .reveal.in{opacity:1;transform:translateY(0)}
   </style>
@@ -52,91 +49,75 @@
 <body>
   <div id="cursor"></div>
   <div id="cursor-ring"></div>
+  
   <nav id="nav">
     <a class="logo" href="#">Tool<span>●</span>Pulse</a>
-    <a class="nav-pill" href="#subscribe">Join Pro</a>
+    <a class="nav-pill" href="#subscribe" style="background:var(--teal); color:var(--bg); padding:8px 20px; border-radius:40px; text-decoration:none; font-weight:700; font-size:13px">Join Pro</a>
   </nav>
 
   <div class="hero">
-    <div class="hero-glow"></div>
-    <h1>The internet's <span class="accent">trusted</span> <br><span class="outline">AI reviews</span></h1>
-    <p style="color:var(--muted2); margin-top:20px">Deep-dive benchmarks. Real data. Connected Affiliate revenue.</p>
+    <h1>The internet's most <br><span class="accent">trusted</span> AI reviews</h1>
+    <p style="color:var(--muted2); margin-top:20px">Real-world benchmarks. Professional payouts.</p>
   </div>
 
   <section class="section" id="tools">
     <div class="grid">
-      <a href="https://www.jasper.ai/" target="_blank" class="card-feat reveal">
+      <a href="REPLACE_WITH_JASPER_LINK" target="_blank" class="card-feat reveal">
         <div>
-          <div style="color:var(--teal); font-weight:800; font-size:11px; margin-bottom:12px;">EDITOR'S PICK</div>
-          <div class="feat-title" style="font-family:var(--ff); font-size:28px">Jasper AI</div>
-          <p style="color:var(--muted2)">The industry leader for long-form marketing copy and SEO.</p>
-          <div class="c-btn" style="display:inline-block; margin-top:20px">Try Jasper Free →</div>
+          <div style="color:var(--teal); font-weight:800; font-size:11px; letter-spacing:2px;">EDITOR'S PICK</div>
+          <div class="feat-title" style="font-family:var(--ff); font-size:28px; margin-top:10px;">Jasper AI — Best for Marketing</div>
+          <p class="feat-desc" style="color:var(--muted2); margin-top:10px;">The industry leader for marketing copy and SEO. 25% recurring commission.</p>
+          <div class="c-btn" style="display:inline-block; margin-top:20px; padding:10px 25px;">Try Jasper Free →</div>
         </div>
         <div class="commission-box">
-          <span class="pct" style="font-family:var(--ff); font-size:52px; color:var(--amber)">9.8</span>
+          <span class="pct">9.8</span>
+          <div style="font-size:12px; color:var(--muted2); margin-top:8px;">ToolPulse Score</div>
         </div>
       </a>
 
       <a href="https://try.elevenlabs.io/hkp5rq3mphge" target="_blank" class="card reveal">
         <div class="c-icon">🔊</div>
         <div class="c-name">ElevenLabs</div>
-        <p class="c-desc">Highest quality AI voices and cloning on the market.</p>
+        <div class="c-desc">Best-in-class AI voice cloning. You earn 22% per referral.</div>
         <div class="c-btn">Try Free →</div>
       </a>
 
-      <a href="https://www.cursor.com/" target="_blank" class="card reveal">
+      <a href="REPLACE_WITH_CURSOR_LINK" target="_blank" class="card reveal">
         <div class="c-icon">💻</div>
         <div class="c-name">Cursor AI</div>
-        <p class="c-desc">The AI-native code editor rebuilding how you write software.</p>
-        <div class="c-btn">Try Now</div>
+        <div class="c-desc">The AI-native code editor. Replacing VS Code for pros.</div>
+        <div class="c-btn">Download →</div>
       </a>
 
-      <a href="https://www.midjourney.com/" target="_blank" class="card reveal">
+      <a href="https://www.midjourney.com" target="_blank" class="card reveal">
         <div class="c-icon">🎨</div>
         <div class="c-name">Midjourney</div>
-        <p class="c-desc">The gold standard for photorealistic AI image generation.</p>
-        <div class="c-btn">Explore</div>
+        <div class="c-desc">Unrivaled image quality for AI art and photorealism.</div>
+        <div class="c-btn">Explore →</div>
       </a>
 
-      <a href="https://www.synthesia.io/" target="_blank" class="card reveal">
+      <a href="REPLACE_WITH_SYNTHESIA_LINK" target="_blank" class="card reveal">
         <div class="c-icon">📹</div>
         <div class="c-name">Synthesia</div>
-        <p class="c-desc">Professional video generation with lifelike AI avatars.</p>
-        <div class="c-btn">Make Video</div>
+        <div class="c-desc">Create video with AI avatars. Professional 20% commission.</div>
+        <div class="c-btn">Make Video →</div>
       </a>
 
-      <a href="https://www.notion.so/product/ai" target="_blank" class="card reveal">
+      <a href="REPLACE_WITH_NOTION_LINK" target="_blank" class="card reveal">
         <div class="c-icon">📊</div>
         <div class="c-name">Notion AI</div>
-        <p class="c-desc">Productivity assistant baked directly into your workspace.</p>
-        <div class="c-btn">Try Free</div>
-      </a>
-
-      <a href="https://claude.ai/" target="_blank" class="card reveal">
-        <div class="c-icon">🤖</div>
-        <div class="c-name">Claude AI</div>
-        <p class="c-desc">Anthropic's advanced model for reasoning and coding help.</p>
-        <div class="c-btn">Chat Now</div>
+        <div class="c-desc">Boost productivity with AI inside your workspace.</div>
+        <div class="c-btn">Try Free →</div>
       </a>
     </div>
   </section>
 
-  <section class="section" id="picks">
-    <div style="font-family:var(--ff); font-size:32px; margin-bottom:30px;">Staff Picks</div>
-    <a href="https://try.elevenlabs.io/hkp5rq3mphge" target="_blank" class="pick reveal">
-      <div class="p-rank">01</div>
-      <div class="p-name">ElevenLabs (Audio)</div>
-      <div style="text-align:right;"><span style="color:var(--amber); font-weight:700;">9.6</span></div>
-      <div class="p-btn">Start →</div>
-    </a>
-  </section>
-
   <div class="cta-banner reveal" id="subscribe">
     <h2>Stay Ahead</h2>
-    <p>Join 12,000+ pros getting AI alerts every week.</p>
+    <p>Join 12,000+ pros getting AI tool alerts every Tuesday.</p>
     <form action="https://formsubmit.co/boboiboybasit@gmail.com" method="POST" class="cta-form">
       <input type="email" name="email" placeholder="your@email.com" required>
-      <button type="submit" class="nav-pill" style="border:none; cursor:pointer;">Subscribe →</button>
+      <button type="submit" style="background:var(--teal); border:none; padding:12px 24px; border-radius:40px; cursor:pointer; font-weight:700">Subscribe →</button>
     </form>
   </div>
 
